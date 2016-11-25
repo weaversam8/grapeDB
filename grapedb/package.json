@@ -15,6 +15,7 @@
     "express": "^4.13.4",
     "express-graphql": "^0.5.2",
     "graphql": "^0.6.0",
+    "graphql-tools": "^0.8.3",
     "promised-mongo": "^1.2.0"
   }
 }

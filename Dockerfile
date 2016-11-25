@@ -22,7 +22,7 @@ RUN apt-get update && \
 
 # install node
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 6.9.1
+ENV NODE_VERSION 4.6.2
 
 # Install nvm with node and npm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.0/install.sh | bash \
@@ -37,7 +37,7 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # create mongodb data directory and expose it as a volume
 RUN mkdir -p /data/db
-#VOLUME /data/db
+VOLUME /data/db
 
 # setup the missing service
 ADD mongod.init.d /etc/init.d/mongod
