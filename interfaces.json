@@ -1,0 +1,1 @@
+{"name":"Node", "value":"interface Node { _id: ID! }"}

@@ -42,14 +42,22 @@ VOLUME /data/db
 # setup the missing service
 ADD mongod.init.d /etc/init.d/mongod
 
+# install the node modules
+WORKDIR /usr/app/grapedb/
+ADD grapedb/package.json package.json
+RUN npm i --production
+
+# add application
+ADD grapedb/ .
+
 # now, add the application specific items
+RUN mkdir -p /usr/app/volume
+VOLUME /usr/app/volume
 ADD startup.sh /usr/app/startup.sh
 RUN chmod 775 /usr/app/startup.sh
-ADD grapedb/ /usr/app/grapedb
-
-# install the node application
-WORKDIR /usr/app/grapedb/
-RUN npm i --production
+ADD firststartup.tmp /usr/app/volume/firststartup.tmp
+ADD types.json /usr/app/types.json
+ADD interfaces.json /usr/app/interfaces.json
 
 # TODO expose ports
 EXPOSE 3000

@@ -1,0 +1,2 @@
+{"name": "Type","value": "type Type { name: String!, value: String! }"}
+{"name": "Interface", "value":"type Interface { name: String!, value: String! }"}
